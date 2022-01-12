@@ -26,14 +26,27 @@ jQuery(function() {
         });
    }
 
+   // header-filter toggler
+   	$('.header__filter-toggler').click(function() {
+   		$('.header-filter').slideDown();
+   		$(this).addClass('hidden');
+   	})
+   // END header-filter toggler
+   
    // object map toggle
    var lastInit = 0;
    	$('.map-toggle').on('click', function() {
-   		$('.object-map--big').slideToggle(function() {
+   		$(this).toggleClass('map-opened');
+   		$('.object-map-box').slideToggle(function() {
    			if(lastInit) return;
    			lastInit++
    			ymaps.ready(init);
    		});
+   	});
+
+   	$('#big-map-close').click(function() {
+   		$('.map-toggle').removeClass('map-opened');
+   		$('.object-map-box').slideUp();
    	});
    // END object map toggle
 				// console.log('ready')
@@ -70,7 +83,7 @@ jQuery(function() {
 								slidesToScroll: 1,
 								slidesToShow: 1,
 								centerMode: true,
-								centerPadding: '24px',
+								centerPadding: '20px',
 								fade: false,
 								dots: false,
 								arrows: false,
