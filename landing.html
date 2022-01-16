@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Лендинг</title>
+    <meta name="description" content="">
+    <link rel="icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div id="pageContent" class="wrapper">
+      <header class="header">
+        <div class="header-top">
+          <div class="container">
+            <div class="popup-box-menu">
+              <div class="popup-box-menu__top-line">
+                <div class="popup-box-menu__logo"><a href="/"><img src="img/static/knportal_base/img/logo.svg" alt="KNPortal - коммерческая недвижимость" class="logo-top"></a><a href="/" class="name-logo">portal</a></div><a href="#" class="close-icon-popup"><img src="img/static/knportal_base/img/cancel.svg" alt=""></a>
+              </div>
+              <div class="popup-box-menu__nav"><a href="">Каталог объектов</a><a href="">Поиск на карте</a><a href="">О проекте</a></div><a href="#" class="popup-box-menu__lk">Личный кабинет</a>
+            </div>
+            <div class="header-line">
+              <div class="m-menu-btn"><img src="img/static/knportal_base/img/new-menu.svg"></div>
+              <div class="header-line__logo"><a href="/"><img src="img/static/knportal_base/img/logo.svg" alt="KNPortal - коммерческая недвижимость" class="logo-top"></a><a href="/" class="name-logo">portal</a></div>
+              <div class="header-line__menu"><a id="catalogPageUrl" href="/catalog/">Каталог объектов</a><a href="/catalog/on_map">Поиск на карте</a>
+                <!-- <a href="javascript:showContactForm();">Обратная связь</a>--><a href="">O проекте</a>
+              </div>
+              <div class="header-line__button"><a onclick="login('/announcement/edit/')" class="btn">Разместить объявление</a><span>Это бесплатно и без регистрации</span></div>
+              <div class="header-line__cabinet">
+                <div id="accountBtn" class="inline-block"><a href="/account/"><img src="img/static/knportal_base/img/n-user-icon.svg" class="icon-mobile icon-mobile--user-in"><span class="name-account span-icon-cab">Андрей Шевченко</span></a></div>
+                <div id="logoutBtn" class="inline-block"><a href="/accounts/logout/"><span class="span-icon-cab">Выход</span></a></div>
+                <div id="loginBtn" style="display: none;" class="inline-block"><a onclick="login('')"><img src="img/static/knportal_base/img/n-user-icon.svg" class="icon-mobile icon-mobile--user-in"><span class="span-icon-cab">Вход</span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script id="hdrSearchData" type="text/json"></script>
+        <div data-v-686071b8="" class="container">
+          <div data-v-686071b8="" class="header-line header-line--title">
+            <div data-v-686071b8="" class="header-title">Сервис по поиску нежилых помещений</div>
+            <div data-v-686071b8="" class="header-subtitle">в Москве и Московской области</div>
+          </div>
+          <div class="header__filter-toggler">Нажмите здесь, чтобы ввести параметры поиска</div>
+          <div data-v-686071b8="" class="header-line">
+            <div data-v-686071b8="" class="header-filter">
+              <form data-v-686071b8="" class="header-filter__top">
+                <div data-v-686071b8="" class="item-filter">
+                  <select data-v-686071b8="" name="deal_type" class="select1">
+                    <option data-v-686071b8="" value="1">Вид сделки</option>
+                    <option data-v-686071b8="" value="2">Аренда</option>
+                    <option data-v-686071b8="" value="3">Продажа</option>
+                  </select>
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <select data-v-686071b8="" name="estate_object_type" class="select2">
+                    <option data-v-686071b8="" value="1">Тип помещения</option>
+                    <option data-v-686071b8="" value="2">Склад/производство</option>
+                    <option data-v-686071b8="" value="3">Офис</option>
+                    <option data-v-686071b8="" value="4">Торговая площадь</option>
+                    <option data-v-686071b8="" value="5">ПСН/Здание</option>
+                    <option data-v-686071b8="" value="6">Коммерческая земля/открытая площадка</option>
+                  </select>
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <select data-v-686071b8="" name="region" class="select2">
+                    <option data-v-686071b8="" value="1">Регион</option>
+                    <option data-v-686071b8="" value="2">Москва</option>
+                    <option data-v-686071b8="" value="3">Московская область</option>
+                  </select>
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <input data-v-686071b8="" type="text" placeholder="Площадь, от" name="area__gt">
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <input data-v-686071b8="" type="text" placeholder="Площадь, до" name="area__lt">
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <input data-v-686071b8="" type="text" placeholder="Цена, от" name="price__gt">
+                </div>
+                <div data-v-686071b8="" class="item-filter">
+                  <input data-v-686071b8="" type="text" placeholder="Цена, до" name="price__lt">
+                </div>
+                <input data-v-686071b8="" type="button" value="Найти">
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="content content--page landing-page ann-list-page">
+        <div class="container">
+          <div class="bredcrumbs"><a href="/">Главная</a> /</div>
+          <h1 data-da="catalog-page__list,740,1">Аренда склада в Московской области</h1>
+          <div class="catalog-page"><a href="/catalog/?deal_type=1&amp;estate_obj_type=9&amp;region=2&amp;tile_id=24" class="catalog-page__filter filter-catalog-page">
+              <div class="filter-catalog-page__block">
+                <div class="filter-catalog-page__title">Ценовая категория за метр</div>
+                <div class="filter-catalog-page__item">
+                  <div class="filter-catalog-page__checkbox"></div>
+                  <div class="filter-catalog-page__val">До 300 руб</div>
+                </div>
+                <div class="filter-catalog-page__item">
+                  <div class="filter-catalog-page__checkbox"></div>
+                  <div class="filter-catalog-page__val">От 300 до 600 руб</div>
+                </div>
+                <div class="filter-catalog-page__item">
+                  <div class="filter-catalog-page__checkbox"></div>
+                  <div class="filter-catalog-page__val">От 600 руб</div>
+                </div>
+              </div>
+              <div class="filter-catalog-page__block">
+                <div class="filter-catalog-page__title">Только первый этаж</div>
+                <div class="filter-catalog-page__item">
+                  <div class="filter-catalog-page__checkbox"></div>
+                  <div class="filter-catalog-page__val">Да</div>
+                </div>
+              </div></a>
+            <div class="catalog-page__list">
+              <div class="mob-sort"><a href="" class="mob-sort__button">Сортировка<img src="img/icons-svg/sort.svg"></a><a href="" class="mob-sort__button">Фильтры<img src="img/icons-svg/filters.svg"></a></div>
+              <div class="sort"><strong>Сортировать:</strong><a href="/catalog/?deal_type=1&amp;estate_obj_type=9&amp;region=2&amp;tile_id=24"><span class="active-sort">По дате</span><span>По цене (сначала самая низкая)</span></a></div>
+              <div class="catalog-page__list-box">
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+                <div class="catalog-page-item">
+                  <div class="catalog-page-flex">
+                    <div class="catalog-page-item__photo"><a href="/card-223">
+                        <div class="picture"><img src="img/rectangle6.jpg" alt=""></div></a></div>
+                    <div class="catalog-page-item__text1">
+                      <div class="title-object"><span><a href="/card-223" class="title">Помещение свободного назначения, от 1 500 м2 до 25 500 м2</a></span>
+                        <div>20 км за МКАД по Горьковскому шоссе</div>
+                      </div>
+                      <div class="prices-mob">
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">700 руб</div>
+                          <div class="prices-mob__key">В месяц/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">8400 руб</div>
+                          <div class="prices-mob__key">В год/м2</div>
+                        </div>
+                        <div class="prices-mob__item">
+                          <div class="prices-mob__val">1 280 000 руб</div>
+                          <div class="prices-mob__key">За всю площадь</div>
+                        </div>
+                      </div>
+                      <div class="address">Московская обл, г Ногинск, рп им. Воровского, ул Рабочая</div>
+                      <div class="org">Производство с кран балками на 3,5 и 5 тонн</div>
+                      <ul class="parameters">
+                        <li>Этаж: 1 этаж</li>
+                        <li>Высота потолка: 10 м</li>
+                        <li>Качество полов: Бетон</li>
+                      </ul>
+                    </div>
+                    <div class="catalog-page-item__text2">
+                      <div class="price">
+                        <div class="price__first">
+                          <div>
+                            <div class="bold-price">
+                              <div class="price__per-meter">от 1 534 464 руб. <span>/2304 м2</span></div>
+                              <div class="price__per-month">от 1 534 464 руб. в месяц</div>
+                            </div>
+                          </div>
+                          <div class="price__to"><span class="bold-price">до 1 050 000 руб.</span>/3000 м2</div>
+                        </div>
+                        <div class="price__second"><span>В месяц:  350 руб./м2</span><span>В год: 4 200 руб./м2</span></div>
+                      </div>
+                      <div class="hdr-advantages">Преимущества объекта:</div>
+                      <ul class="parameters2">
+                        <li><span class="star">*</span> Кран-балка</li>
+                        <li><span class="star">*</span> Ворота в пол</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="view-map">Показать на карте</div>
+                  <div style="display:none;" class="object-map">
+                    <div id="ymapsID_223" style="width: 100%;height: 100%;" data-lat="55,7298947" data-lon="38,3386643"></div>
+                  </div>
+                  <div class="button-object"><span data-url="/api/announcements/223/phone_number/" class="button-object__phone"><span style="display:none;" class="phone"></span><span class="show-num">Показать телефон</span><span class="num-short"><span class="info-phone">Нажмите для просмотра номера</span><strong>+7(925) 322-15..</strong></span></span><a href="/card-223" class="btn button-object__view">Подробнее</a><span class="created-data">Добавлено 14.03.2021</span></div>
+                </div>
+              </div>
+              <div class="bottom-new-cat">
+                <div class="pagination-catalog"><a href="?page=2" class="pagination-catalog__prev">Назад</a><a href="?page=1">1</a><a href="?page=2">2</a><a href="?page=3" class="pagination-active">3</a><a href="?page=4">4</a><a href="?page=5">5</a><span>...</span><a href="?page=11">11</a><a href="?page=4" class="pagination-catalog__next">Вперед</a></div>
+                <div class="bottom-new-cat__bottom"><a href="/catalog/" class="btn"><span class="bottom-new-cat__see-all">Смотреть все предложения</span><span class="bottom-new-cat__see">Смотреть всё</span></a></div>
+              </div>
+            </div>
+          </div>
+          <section class="description-text">
+            <h2 class="description-text__tilte">Аренда удобных складов</h2>
+            <p>Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом  Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом. Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое</p>
+            <h2 class="description-text__tilte">Аренда недорогих  складов с оборудованием</h2>
+            <p>Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом  Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом. Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое помещение у МКАД или с бесплатным въездом Вы можете использовать фильтры: найти склад с готовыми стеллажами на первом этаже, полами антипыль, ворота докового типа или на пандус, рампу, недорогое коммерческое</p>
+          </section>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-row">
+          <div class="container">
+            <div class="footer-line">
+              <div class="copyright">© 2020 KNportal<br>Сервис по поиску коммерческой недвижимости</div>
+              <div class="footer-line__menu">
+                <ul>
+                  <li><a href="/kontakty">Контакты</a></li>
+                  <li><a href="/podat-obyavlenie">Подать объявление</a></li>
+                </ul>
+              </div>
+              <div class="footer-line__text2">
+                <div class="hdr3">Помогите нам стать лучше</div><span>Не нашли что искали? <br> Расскажите об этом, мы доработаем сервис</span>
+              </div><a href="javascript:showContactForm();" class="btn">Отправить обращение</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script src="js/libs/jquery/jquery-3.1.1.min.js"></script>
+    
+    
+    
+    
+    <script src="js/libs/dynamic-adaptive/da.min.js"></script>
+    <script src="js/libs/jquery.fancybox.min.js"></script>
+    <script src="js/libs/jquery.maskedinput.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

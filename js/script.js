@@ -76,7 +76,8 @@ $(document).ready(function(){
   });  
 	
 	$('.view-map').on('click', function() {
-      $(this).next('.object-map').slideToggle(200);
+      $(this).closest('.catalog-page-item').find('.object-map').slideToggle(200);
+      // $(this).next('.object-map').slideToggle(200);
 			$(this).toggleClass('active');
   });
 	
