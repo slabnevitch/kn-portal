@@ -4247,10 +4247,6 @@ input[type=radio] {
 		/*justify-content: flex-start;*/
 	}
 
-	.catalog-page__filter {
-		margin-top: 10px;
-	}
-
 	.info-lk {
 		order: 2;
 		width: calc(100% - 265px);
@@ -4412,7 +4408,7 @@ input[type=radio] {
 		margin-left: 0;
 	}*/
 	.catalog-page .sort {
-		margin-top: 42px;
+		margin-top: 5px;
 		line-height: 120%;
 	}
 

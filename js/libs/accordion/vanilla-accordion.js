@@ -4,7 +4,6 @@ function Accordion(accordionList, duration/*, disableCheckPoint*/){
   // checkpoint = disableCheckPoint !== undefined ? disableCheckPoint : null;
   
   this.init = function(){
-    console.log('vanilla-accordion.js')
   	links = this.linksFilter(accordionList, "accordion__link");
 
     for(var i=0 ; i<links.length; i++){
