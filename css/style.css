@@ -647,6 +647,8 @@ input[type=tel]:focus,
 	padding-bottom: 5px;
 	display: inline-block;
 	margin-left: 15px;
+}
+.catalog-page .sort span:not(:first-child){
 	cursor: pointer;
 }
 
@@ -657,7 +659,6 @@ input[type=tel]:focus,
     display: block;
     flex: 1 0 263px;
 	max-width: 263px;
-    padding: 15px 24px;
 	margin-top: 53px;
   border-radius: 5px;
   border: 1px solid #dadada;
@@ -692,7 +693,7 @@ input[type=tel]:focus,
 }
 .subtitle-filter {
 	font-weight: 600;
-	margin-bottom: 12px;
+	margin-bottom: 16px;
 	line-height: 120%;	
 }
 .title-filter__item {
@@ -731,7 +732,7 @@ input[type=tel]:focus,
 
 .catalog-page__list {
     flex: 1 1 auto;
-	/*width: calc(100% - 288px);*/
+	width: calc(100% - 288px);
 	margin-left: 30px;
 }
 .object-map {
